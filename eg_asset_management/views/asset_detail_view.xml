@@ -46,7 +46,7 @@
                         <group string="Asset Management">
                             <field name="employee_id" readonly="state == 'active'" options="{'no_create_edit': True, 'no_create': True}"/>
                             <field name="date_from" readonly="state == 'active'"/>
-                            <field name="date_till" readonly="state == 'active'"/>
+                            <field name="date_till"/>
                             <button name="%(action_asset_reassign_wizard)d" string="Reassign" class="btn-primary" type="action"
                             invisible="state not in 'active'"/>
                         </group>
