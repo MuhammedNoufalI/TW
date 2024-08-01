@@ -1,6 +1,6 @@
 {
     'name': 'Asset Management',
-    'version': '17.0',
+    'version': '17.0.1.0.0',
     'category': 'Human Resources/Employees',
     'summary': 'Asset Management',
     'author': 'INKERP',
@@ -9,11 +9,12 @@
     
     'data': [
         'data/ir_sequence.xml',
+        'security/ir.model.access.csv',
+        'wizard/asset_reassign_views.xml',
         'views/asset_category_view.xml',
         'views/asset_detail_view.xml',
         'views/asset_location_view.xml',
         'views/asset_move_view.xml',
-        'security/ir.model.access.csv',
     ],
     
     'images': ['static/description/banner.png'],
