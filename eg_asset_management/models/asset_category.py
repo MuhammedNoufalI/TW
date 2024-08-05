@@ -6,3 +6,4 @@ class AssetCategory(models.Model):
     _description = "Asset Category"
 
     name = fields.Char(string="Name")
+    short_code = fields.Char(string="")
