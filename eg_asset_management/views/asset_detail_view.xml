@@ -7,7 +7,8 @@
                 <field name="name"/>
                 <field name="category_id"/>
                 <field name="asset_model"/>
-                <field name="serial_no"/>
+                <field name="employee_id"/>
+                <field name="location_code"/>
                 <field name="state"/>
             </tree>
         </field>
