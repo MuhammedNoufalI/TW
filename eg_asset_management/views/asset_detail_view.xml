@@ -37,6 +37,7 @@
                             <field name="category_id" options="{'no_create_edit': True, 'no_create': True}"/>
                             <field name="asset_code" readonly="1"/>
                             <field name="asset_model"/>
+                            <field name="Asset Brand"/>
                             <field name="serial_no"/>
                         </group>
                         <group>
