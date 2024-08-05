@@ -11,6 +11,7 @@ class AssetDetail(models.Model):
     category_id = fields.Many2one(comodel_name="asset.category", string="Category")
     asset_code = fields.Char(string="Asset Code")
     asset_model = fields.Char(string="Asset Model")
+    asset_brand = fields.Char(string="Asset Brand")
     serial_no = fields.Char(string="Serial No.")
     purchase_date = fields.Date(string="Purchase Date")
     purchase_value = fields.Float(string="Purchase Value")
