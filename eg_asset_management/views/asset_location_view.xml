@@ -21,6 +21,7 @@
                         <label class="oe_edit_only" for="name" string="Location"/>
                         <h1>
                             <field name="name" placeholder="Name"/>
+                            <field name="location_code"  placeholder="location_code"/>
                         </h1>
                     </div>
                     <group>
