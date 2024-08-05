@@ -1,0 +1,12 @@
+<odoo>
+    <record id="view_asset_category_form_inherit" model="ir.ui.view">
+        <field name="name">eg.asset.category.form.inherit</field>
+        <field name="model">eg.asset.category</field>
+        <field name="inherit_id" ref="eg_asset_management.view_eg_asset_category_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='name']" position="after">
+                <field name="short_code"/>
+            </xpath>
+        </field>
+    </record>
+</odoo>
