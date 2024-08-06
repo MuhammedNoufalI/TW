@@ -20,7 +20,7 @@
             <form>
                 <header>
                     <button name="confirm_asset" string="Confirm" class="btn-primary" type="object"
-                            invisible="state not in 'draft'"/>
+                            invisible="state  in 'active'"/>
                     <button name="scrap_asset" string="Scrap" class="btn-primary" type="object"
                             invisible="state not in 'active'"/>
                     <field name="state" widget="statusbar" statusbar_visible="draft,release,active"/>
@@ -44,6 +44,7 @@
                             <field name="purchase_date"/>
                             <field name="purchase_value"/>
                             <field name="location_id" options="{'no_create_edit': True, 'no_create': True}"/>
+                            <field name="file_data" filename="file_name"/>
                         </group>
                         <group string="Asset Management">
                             <field name="employee_id" readonly="state == 'active'" options="{'no_create_edit': True, 'no_create': True}"/>
@@ -52,7 +53,7 @@
                             <button name="%(action_asset_reassign_wizard)d" string="Reassign" class="btn-primary" type="action"
                             invisible="state not in 'active'"/>
                             <button name="release_asset" string="Release" class="btn-primary" type="object"
-                            invisible="state not in 'active'"/>
+                            invisible="['|',('state','=','draft'),('state','=','release')]"/>
                         </group>
                     </group>
                     <notebook>
@@ -67,7 +68,7 @@
                         </page>
                         <page string="Asset History">
                             <field name="history_ids" options="{'no_create_edit': True, 'no_create': True}">
-                                <tree string="Asset History"  deletable="false">
+                                <tree string="Asset History"  delete="false" create="false" editable="none">
                                     <field name="employee_id"/>
                                     <field name="date_from" readonly="1"/>
                                     <field name="date_till" readonly="1"/>

@@ -1,4 +1,5 @@
 from odoo import fields, models, api
+from odoo.exceptions import UserError
 
 
 class AssetReassign(models.Model):
@@ -15,6 +16,8 @@ class AssetReassign(models.Model):
         for rec in self:
             active_asset = self.env['asset.detail']._context.get('active_id')
             asset = self.env['asset.detail'].browse(active_asset)
+            if not asset.date_till:
+                raise UserError(f"Please add an end date for {asset.employee_id.name}.")
             prev_emp = asset.employee_id
             prev_date_from = asset.date_from
             prev_date_till = asset.date_till
@@ -22,6 +25,7 @@ class AssetReassign(models.Model):
                 'employee_id': rec.employee_id.id,
                 'date_from': rec.date_from,
                 'date_till': rec.date_till,
+                'reassigned': "true",
                 'history_ids': [(0, 0, {
                     'employee_id': prev_emp.id,
                     'date_from': prev_date_from,
