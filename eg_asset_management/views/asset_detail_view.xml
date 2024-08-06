@@ -23,7 +23,7 @@
                             invisible="state not in 'draft'"/>
                     <button name="scrap_asset" string="Scrap" class="btn-primary" type="object"
                             invisible="state not in 'active'"/>
-                    <field name="state" widget="statusbar" statusbar_visible="draft,active"/>
+                    <field name="state" widget="statusbar" statusbar_visible="draft,release,active"/>
                 </header>
                 <sheet>
                     <div class="oe_title">
@@ -51,6 +51,8 @@
                             <field name="date_till"/>
                             <button name="%(action_asset_reassign_wizard)d" string="Reassign" class="btn-primary" type="action"
                             invisible="state not in 'active'"/>
+                            <button name="release_asset" string="Release" class="btn-primary" type="action"
+                            invisible="state not in 'draft'"/>
                         </group>
                     </group>
                     <notebook>
