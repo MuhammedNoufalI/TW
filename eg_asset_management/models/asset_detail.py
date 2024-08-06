@@ -48,6 +48,7 @@ class AssetDetail(models.Model):
         for asset_id in self:
             asset_id.state = "release"
             prev_emp = asset_id.employee_id
+            print ( asset_id )
             prev_date_from = asset_id.date_from
             prev_date_till = asset_id.date_till
             asset = self.browse(asset_id)
