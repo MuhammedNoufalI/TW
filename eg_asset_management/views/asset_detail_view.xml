@@ -51,7 +51,7 @@
                             <field name="date_till"/>
                             <button name="%(action_asset_reassign_wizard)d" string="Reassign" class="btn-primary" type="action"
                             invisible="state not in 'active'"/>
-                            <button name="release_asset" string="Release" class="btn-primary"
+                            <button name="release_asset" string="Release" class="btn-primary" type="object
                             invisible="state not in 'active'"/>
                         </group>
                     </group>

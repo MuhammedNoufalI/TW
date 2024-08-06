@@ -47,3 +47,15 @@ class AssetDetail(models.Model):
     def release_asset(self):
         for asset_id in self:
             asset_id.state = "release"
+            prev_emp = asset_id.employee_id
+            prev_date_from = asset_id.date_from
+            prev_date_till = asset_id.date_till
+            asset = self.browse(asset_id)
+            asset.write({
+                'history_ids': [(0, 0, {
+                    'employee_id': prev_emp.id,
+                    'date_from': prev_date_from,
+                    'date_till': prev_date_till,
+                    'asset_id': asset.id,
+                })]
+            })
