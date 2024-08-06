@@ -21,7 +21,7 @@ class AssetDetail(models.Model):
     warranty_start = fields.Date(string="Warranty Start")
     warranty_end = fields.Date(string="Warranty End")
     note = fields.Html(string="Note")
-    state = fields.Selection([('draft', 'New'), ('active', 'Active'), ('scrap', 'Scrap'), ('release', 'Release')], string='State', default="draft")
+    state = fields.Selection([('draft', 'New'),('release', 'Release'), ('active', 'Active'), ('scrap', 'Scrap') ], string='State', default="draft")
     history_ids = fields.One2many('asset.history', 'asset_id', string="Asset History")
     spec_ids = fields.One2many('asset.specification', 'asset_id', string="Asset Configuration")
     date_from = fields.Datetime(string="From")

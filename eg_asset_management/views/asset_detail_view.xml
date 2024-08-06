@@ -52,7 +52,7 @@
                             <button name="%(action_asset_reassign_wizard)d" string="Reassign" class="btn-primary" type="action"
                             invisible="state not in 'active'"/>
                             <button name="release_asset" string="Release" class="btn-primary"
-                            invisible="state not in 'draft'"/>
+                            invisible="state not in 'active'"/>
                         </group>
                     </group>
                     <notebook>
