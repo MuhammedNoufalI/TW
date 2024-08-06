@@ -56,6 +56,6 @@ class AssetDetail(models.Model):
                     'employee_id': prev_emp.id,
                     'date_from': prev_date_from,
                     'date_till': prev_date_till,
-                    'asset_id': asset.id,
+                    'asset_id': asset_id.id,
                 })]
             })
