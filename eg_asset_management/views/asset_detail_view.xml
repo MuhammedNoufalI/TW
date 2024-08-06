@@ -65,7 +65,7 @@
                         </page>
                         <page string="Asset History">
                             <field name="history_ids">
-                                <tree string="Asset History" editable="bottom">
+                                <tree string="Asset History" editable="bottom" deletable="false">
                                     <field name="employee_id"/>
                                     <field name="date_from" readonly="1"/>
                                     <field name="date_till" readonly="1"/>
