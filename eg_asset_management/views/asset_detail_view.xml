@@ -49,7 +49,7 @@
                             <field name="employee_id" readonly="state == 'active'" options="{'no_create_edit': True, 'no_create': True}"/>
                             <field name="date_from" readonly="state == 'active'"/>
                             <field name="date_till"/>
-                            <button name="%(action_asset_reassign_wizard)d" string="1" class="btn-primary" type="action"
+                            <button name="%(action_asset_reassign_wizard)d" string="Reassign" class="btn-primary" type="action"
                             invisible="state not in 'active'"/>
                         </group>
                     </group>
@@ -64,7 +64,7 @@
                             </group>
                         </page>
                         <page string="Asset History">
-                            <field name="history_ids">
+                            <field name="history_ids" options="{'no_create_edit': True, 'no_create': True}">
                                 <tree string="Asset History"  deletable="false">
                                     <field name="employee_id"/>
                                     <field name="date_from" readonly="1"/>
