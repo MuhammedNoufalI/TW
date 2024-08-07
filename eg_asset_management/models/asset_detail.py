@@ -67,6 +67,8 @@ class AssetDetail(models.Model):
         for asset_id in self:
             if not asset_id.employee_id:
                 raise UserError("Please add an employee before confirming the asset")
+            if not asset_id.date_from:
+                raise UserError("Please add From Date before confirming the asset")
             asset_id.state = "active"
 
     def release_asset(self):
