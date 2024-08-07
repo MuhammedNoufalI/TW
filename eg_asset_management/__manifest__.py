@@ -1,6 +1,6 @@
 {
     'name': 'Asset Management',
-    'version': '17.0.5.0.0',
+    'version': '17.0.1.0.0',
     'category': 'Human Resources/Employees',
     'summary': 'Asset Management',
     'author': 'INKERP',
