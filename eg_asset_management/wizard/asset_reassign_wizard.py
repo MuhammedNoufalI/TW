@@ -18,6 +18,8 @@ class AssetReassign(models.Model):
             asset = self.env['asset.detail'].browse(active_asset)
             if not asset.date_till:
                 raise UserError(f"Please add an end date for {asset.employee_id.name}.")
+            if rec.date_from < asset.date_till:
+                raise UserError("Please add a start date after the previous end date.")
             prev_emp = asset.employee_id
             prev_date_from = asset.date_from
             prev_date_till = asset.date_till

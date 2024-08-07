@@ -5,6 +5,9 @@ from odoo.exceptions import UserError
 
 class AssetDetail(models.Model):
     _name = "asset.detail"
+    _inherit = ['mail.thread.main.attachment', 'mail.activity.mixin', 'resource.mixin',
+                'avatar.mixin']
+    _mail_post_access = 'read'
     _description = "Asset Detail"
 
     name = fields.Char(string="Name")
@@ -23,20 +26,36 @@ class AssetDetail(models.Model):
     warranty_start = fields.Date(string="Warranty Start")
     warranty_end = fields.Date(string="Warranty End")
     note = fields.Html(string="Note")
-    state = fields.Selection([('draft', 'New'),('release', 'Release'), ('active', 'Assigned'), ('scrap', 'Scrap') ], string='State', default="draft")
+    state = fields.Selection([('draft', 'New'), ('release', 'Release'), ('active', 'Assigned'), ('scrap', 'Scrap')],
+                             string='State', default="draft")
     history_ids = fields.One2many('asset.history', 'asset_id', string="Asset History")
     spec_ids = fields.One2many('asset.specification', 'asset_id', string="Asset Configuration")
     date_from = fields.Datetime(string="From")
     date_till = fields.Datetime(string="To")
-    reassigned = fields.Boolean(string="Reassigned",default="false")
-
+    reassigned = fields.Boolean(string="Reassigned", default="false")
 
     @api.model
     def create(self, vals):
         location_id = self.env["asset.location"].search([("is_default", "=", True)], limit=1)
-        vals["asset_code"] = self.env["ir.sequence"].next_by_code("asset.detail", sequence_date=datetime.now().year) or "New"
-        vals["location_id"] = location_id.id if location_id else None
-        return super(AssetDetail, self).create(vals)
+        # vals["asset_code"] = self.env["ir.sequence"].next_by_code("asset.detail",
+        #                                                           sequence_date=datetime.now().year) or "New"
+        if location_id:
+            vals["location_id"] = location_id.id
+        res = super(AssetDetail, self).create(vals)
+        code = self.env["ir.sequence"].next_by_code("asset.detail", sequence_date=datetime.now().year) or "New"
+        loc_code = ''
+        cat_code = ''
+        if res:
+            if res.location_id:
+                loc_code = res.location_id.location_code
+            if res.category_id:
+                cat_code = res.category_id.short_code
+        asset_code = 'TW/' + loc_code + '/' + cat_code + '/' + code
+        print("asset_code", asset_code)
+        res.write({
+            'asset_code': asset_code
+        })
+        return res
 
     def scrap_asset(self):
         for asset_id in self:
@@ -46,7 +65,10 @@ class AssetDetail(models.Model):
 
     def confirm_asset(self):
         for asset_id in self:
+            if not asset_id.employee_id:
+                raise UserError("Please add an employee before confirming the asset")
             asset_id.state = "active"
+
     def release_asset(self):
         for asset_id in self:
             if not asset_id.date_till:
@@ -66,6 +88,3 @@ class AssetDetail(models.Model):
             asset_id.employee_id = None
             asset_id.date_from = None
             asset_id.date_till = None
-
-
-

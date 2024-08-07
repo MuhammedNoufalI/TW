@@ -10,8 +10,7 @@
         <record id="sequence_asset_detail" model="ir.sequence">
             <field name="name">Asset Detail</field>
             <field name="code">asset.detail</field>
-            <field name="prefix">TW/%(short_code)s/%(location_code)s/%(seq_id)s</field>
-            <field name="prefix">AST/%(range_year)s/</field>
+<!--            <field name="prefix">AST/%(range_year)s/</field>-->
             <field name="padding">5</field>
             <field name="company_id" eval="False"/>
 

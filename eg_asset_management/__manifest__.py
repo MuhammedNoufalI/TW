@@ -1,12 +1,16 @@
 {
     'name': 'Asset Management',
-    'version': '17.0.1.0.0',
+    'version': '17.0.5.0.0',
     'category': 'Human Resources/Employees',
     'summary': 'Asset Management',
     'author': 'INKERP',
     'website': 'https://www.inkerp.com/',
-    'depends': ['hr', 'mail'],
-    
+    'depends': ['hr', 'base_setup',
+                'phone_validation',
+                'mail',
+                'resource',
+                'web'],
+
     'data': [
         'data/ir_sequence.xml',
         'security/ir.model.access.csv',
@@ -16,7 +20,7 @@
         'views/asset_location_view.xml',
         'views/asset_move_view.xml',
     ],
-    
+
     'images': ['static/description/banner.png'],
     'license': "OPL-1",
     'installable': True,
